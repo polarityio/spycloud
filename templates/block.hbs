@@ -1,0 +1,156 @@
+{{#if details.errorMessage}}
+  <div>
+    {{#if (not (eq details.allowRetry false))}}
+      <button
+        type="button"
+        class="p-btn btn btn-sm btn-polarity retry-btn mt-2"
+        {{action "retryLookup"}}
+      >
+        {{#if running}}
+          {{fa-icon icon="spinner-third" fixedWidth=true spin=true}}
+        {{else}}
+          Retry Search
+        {{/if}}
+      </button>
+    {{/if}}
+
+    <div class="mt-1">
+      {{details.errorMessage}}
+    </div>
+
+    <div>
+      <span class="p-footnote">
+        You can retry your search by pressing the "Retry Search" button.</span>
+    </div>
+  </div>
+{{else}}
+  {{#if details}}
+    <div class="mt-1">
+      <a class="p-link" href="https://portal.spycloud.com">View in SpyCloud
+        {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
+    </div>
+
+    <div>
+      <h1 class="p-title">
+        {{fa-icon "search" fixedWidth=true}}
+        Information:
+      </h1>
+    </div>
+
+    {{#each details as |data index|}}
+      <div>
+        {{#if (gt index 0)}}
+          <hr />
+        {{/if}}
+        {{#if data.severity}}
+          <div class="severity">
+            <span class="p-key">Severity: </span>
+            <span class="p-value">{{data.severity}}</span>
+          </div>
+        {{/if}}
+
+        {{#if data.sighting}}
+          <div>
+            <span class="p-key">Sighting: </span>
+            <span class="p-value">{{data.sighting}}</span>
+          </div>
+        {{/if}}
+
+        {{#each data.ip_addresses as |ip|}}
+          <div>
+            <span class="p-key">IP address: </span>
+            <span class="p-value">{{ip}}</span>
+          </div>
+        {{/each}}
+
+        {{#if data.full_name}}
+          <div>
+            <span class="p-key">Name: </span>
+            <span class="p-value">{{data.full_name}}</span>
+          </div>
+        {{/if}}
+
+        {{#if data.first_name}}
+          <div>
+            <span class="p-key">First Name: </span>
+            <span class="p-value">{{data.first_name}}</span>
+          </div>
+        {{/if}}
+
+        {{#if data.last_name}}
+          <div>
+            <span class="p-key">Last Name: </span>
+            <span class="p-value">{{data.last_name}} </span>
+          </div>
+        {{/if}}
+
+        {{#if data.email_domain}}
+          <div>
+            <span class="p-key">Email Domain: </span>
+            <span class="p-value">{{data.email_domain}}</span>
+          </div>
+        {{/if}}
+
+        {{#if data.email_username}}
+          <div>
+            <span class="p-key">Email Username: </span>
+            <span class="p-value">{{data.email_username}}</span>
+          </div>
+        {{/if}}
+
+        {{#if data.domain}}
+          <div>
+            <span class="p-key">Domain: </span>
+            <span class="p-value">{{data.domain}}</span>
+          </div>
+        {{/if}}
+
+        {{#if data.password_type}}
+          <div>
+            <span class="p-key">Password Type: </span>
+            <span class="p-value">{{data.password_type}}</span>
+          </div>
+        {{/if}}
+
+        {{#if data.spycloud_publish_date}}
+          <div>
+            <span class="p-key">Publish Date: </span>
+            <span class="p-value">{{data.spycloud_publish_date}}</span>
+          </div>
+        {{/if}}
+
+        {{#each data.social_linkedin as |social|}}
+          <div>
+            <span class="p-key">LinkedIn Profile Name: </span>
+            <span class="p-value">{{social}}</span>
+          </div>
+        {{/each}}
+
+        {{#if data.linkedin_number_connections}}
+          <div>
+            <span class="p-key">LinkedIn Connections: </span>
+            <span class="p-value">{{data.linkedin_number_connections}}</span>
+          </div>
+        {{/if}}
+
+        {{#if data.job_title}}
+          <div>
+            <span class="p-key">Job Title: </span>
+            <span class="p-value">{{data.job_title}}</span>
+          </div>
+        {{/if}}
+
+        {{#if data.geolocation}}
+          <div>
+            <span class="p-key">Geolocation: </span>
+            <span class="p-value">{{data.geolocation}}</span>
+          </div>
+        {{/if}}
+      </div>
+    {{/each}}
+  {{else}}
+    No Results Found in
+    {{block.name}}
+    for this entity
+  {{/if}}
+{{/if}}
