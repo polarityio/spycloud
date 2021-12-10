@@ -91,12 +91,10 @@ const doLookup = async (entities, options, callback) => {
   const fetchApiData = limiter.wrap(_fetchApiData);
 
   try {
-    Logger.trace({test:111111111, entities})
     const lookupResults = await Promise.all(
       map(async (entity) => await fetchApiData(entity, options), entities)
     );
 
-    Logger.trace({ LOOKUP_RESULTS: lookupResults });
     return callback(null, lookupResults);
   } catch (err) {
     return callback(err);
