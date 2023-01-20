@@ -3,7 +3,7 @@ const { map } = require('lodash/fp');
 const Bottleneck = require('bottleneck/es5');
 const config = require('./config/config');
 const fs = require('fs');
-const request = require('request');
+const request = require('postman-request');
 
 let limiter = null;
 let requestWithDefaults;
