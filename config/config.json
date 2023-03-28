@@ -1,4 +1,5 @@
 {
+  "polarityIntegrationUuid": "faa2baf0-cce1-11ed-aeee-075d3490155d",
   "name": "SpyCloud",
   "acronym": "SPY",
   "description": "The Polarity SpyCloud integration searches the SpyCloud API for Watchlist Asset Breach data for Domains, Email, and IPs.",
